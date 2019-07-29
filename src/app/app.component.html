@@ -1,7 +1,34 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span>MK8-Capitale</span>
+    <div class="main-menu">
+      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+      <mat-menu #menu="matMenu">
+        <button routerLink="/challenges" mat-menu-item>Challenges</button>
+        <button mat-menu-item>Classement</button>
+        <button mat-menu-item>Statisiques</button>
+        <button mat-menu-item>Règlements</button>
+      </mat-menu>
+  </div>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<router-outlet></router-outlet>
+<mat-grid-list cols="6" rowHeight="100px">
+  <mat-grid-tile
+    [colspan]="1"
+    [rowspan]="1">
+  </mat-grid-tile>
+  <mat-grid-tile
+      [colspan]="4"
+      [rowspan]="1">
+      <div class="main-container">
+        <router-outlet></router-outlet>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile
+    [colspan]="1"
+    [rowspan]="1">
+  </mat-grid-tile> 
+</mat-grid-list>
+
+
