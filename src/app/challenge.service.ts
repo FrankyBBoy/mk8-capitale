@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
 import { AngularFirestore } from '@angular/fire/firestore';
-import {formatDate} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +20,10 @@ export class ChallengeService {
               .add(data)
               .then(res => {}, err => reject(err));
       });
+  }
+
+  getChallenges() {
+    return this.firestore.collection("challenge").snapshotChanges();
   }
   
 }
