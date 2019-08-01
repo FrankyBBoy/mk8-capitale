@@ -1,0 +1,12 @@
+.simple-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .simple-form > * {
+    width: 100%;
+  }
+
+  .challenge-form-button-group button {
+      margin-right: 0.5em;
+  }
