@@ -1,14 +1,20 @@
 <h1>Nouveau challenge</h1>
-<div class="simple-form">
+<form class="simple-form" [formGroup]="this.challengeService.form" (ngSubmit)="onSubmit()">
   <mat-form-field>
-    <input matInput placeholder="Joueur 1">
+    <input 
+    matInput 
+    placeholder="Joueur 1"
+    formControlName="playerOneName"/>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Joueur 2">
+    <input 
+    matInput 
+    placeholder="Joueur 2"
+    formControlName="playerTwoName"/>
   </mat-form-field>
-</div>
+</form>
 
 <div class="challenge-form-button-group">
-  <button mat-raised-button color="primary">Confirmer</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()">Confirmer</button>
   <button mat-raised-button color="warn" routerLink="/challenges">Annuler</button>
 </div>

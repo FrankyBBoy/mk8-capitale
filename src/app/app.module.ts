@@ -13,6 +13,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ChallengeFormComponent } from './challenge-form/challenge-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from "@angular/forms";
+
+//environment import
+import { environment } from "src/environments/environment";
+
+//angularfire imports
+import { AngularFireModule } from "@angular/fire";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 
 @NgModule({
   declarations: [
@@ -30,7 +38,10 @@ import { MatInputModule } from '@angular/material/input';
     MatGridListModule,
     MatMenuModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
