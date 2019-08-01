@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChallengeService } from '../challenge.service'
+import { Router } from '@angular/router';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-challenge-form',
@@ -8,16 +10,28 @@ import { ChallengeService } from '../challenge.service'
 })
 export class ChallengeFormComponent implements OnInit {
 
-  constructor(private challengeService:ChallengeService) { }
+  constructor(private challengeService:ChallengeService,
+              private router: Router) { }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    let data = this.challengeService.form.value;
+    let data = {'playerOne': 
+                {'name': this.challengeService.form.value.playerOneName,
+                 'score': 0},
+                'playerTwo':
+                  {'name': this.challengeService.form.value.playerTwoName,
+                   'score': 0},
+                'dateStart': formatDate(new Date(), 'yyyy/MM/dd', 'en'),
+                'dateEnd': '',
+                'completed': false};
+    
+    
 
     this.challengeService.createChallenge(data).then(res => {
-        alert('ok!');
+      // TODO handle succès ou echec de l'insert et redirect
+      this.router.navigate(['/challenges']);
     });
   }
 
