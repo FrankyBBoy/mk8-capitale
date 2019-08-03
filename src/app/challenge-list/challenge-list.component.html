@@ -12,7 +12,7 @@
             <td>{{ challenge.payload.doc.data().playerOne.name }}</td>
             <td>
               <mat-select 
-              (selectionChange)="onScoreChange($event.value)" 
+              (selectionChange)="onScoreChange($event.value, challenge, 'playerOne')" 
               [value]=challenge.payload.doc.data().playerOne.score >
                 <mat-option *ngFor="let scoreValue of scoreValues" [value]="scoreValue">
                   {{scoreValue}}
@@ -25,7 +25,9 @@
           <tr>
             <td>{{ challenge.payload.doc.data().playerTwo.name }}</td>
             <td>
-              <mat-select [value]=challenge.payload.doc.data().playerTwo.score >
+              <mat-select 
+              (selectionChange)="onScoreChange($event.value, challenge, 'playerTwo')" 
+              [value]=challenge.payload.doc.data().playerTwo.score >
                 <mat-option *ngFor="let scoreValue of scoreValues" [value]="scoreValue">
                   {{scoreValue}}
                 </mat-option>

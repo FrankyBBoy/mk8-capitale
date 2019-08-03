@@ -25,5 +25,17 @@ export class ChallengeService {
   getChallenges() {
     return this.firestore.collection("challenge").snapshotChanges();
   }
+
+  updateChallenge(data, newScore, playerNumber) { 
+    let hashWithNewValues = {};
+    
+    hashWithNewValues[playerNumber] = { score: newScore };
+
+    return this.firestore
+      .collection("challenge")
+      .doc(data.payload.doc.id)
+      .set(hashWithNewValues, { merge: true });
+      //.set({ playerOne: { score: newScore } }, { merge: true });
+  }
   
 }
