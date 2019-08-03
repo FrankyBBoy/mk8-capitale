@@ -15,7 +15,14 @@ export class ChallengeListComponent implements OnInit {
   }
 
   challenges;
+  completedChallenges;
+  inProgressChallenges;
 
-  getChallenges = () => this.challengeService.getChallenges().subscribe(res => (this.challenges = res));
-
+  getChallenges() {
+    this.challengeService.getChallenges().subscribe(res => {
+      this.challenges = res;
+      this.completedChallenges = this.challenges.filter(challenge => challenge.payload.doc.data().dateEnd !== '');
+      this.inProgressChallenges = this.challenges.filter(challenge => challenge.payload.doc.data().dateEnd === '');
+    });
+  }
 }

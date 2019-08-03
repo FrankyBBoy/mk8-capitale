@@ -24,11 +24,8 @@ export class ChallengeFormComponent implements OnInit {
                   {'name': this.challengeService.form.value.playerTwoName,
                    'score': 0},
                 'dateStart': formatDate(new Date(), 'yyyy/MM/dd', 'en'),
-                'dateEnd': '',
-                'completed': false};
-    
-    
-
+                'dateEnd': ''};
+  
     this.challengeService.createChallenge(data).then(res => {
       // TODO handle succès ou echec de l'insert et redirect
       this.router.navigate(['/challenges']);
