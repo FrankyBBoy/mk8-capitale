@@ -14,6 +14,7 @@ import { ChallengeFormComponent } from './challenge-form/challenge-form.componen
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from "@angular/forms";
+import { MatSelectModule } from '@angular/material/select';
 
 //environment import
 import { environment } from "src/environments/environment";
@@ -41,7 +42,8 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

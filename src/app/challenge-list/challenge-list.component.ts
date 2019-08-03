@@ -17,6 +17,7 @@ export class ChallengeListComponent implements OnInit {
   challenges;
   completedChallenges;
   inProgressChallenges;
+  scoreValues = [0,1,2,3,4];
 
   getChallenges() {
     this.challengeService.getChallenges().subscribe(res => {
@@ -24,5 +25,9 @@ export class ChallengeListComponent implements OnInit {
       this.completedChallenges = this.challenges.filter(challenge => challenge.payload.doc.data().dateEnd !== '');
       this.inProgressChallenges = this.challenges.filter(challenge => challenge.payload.doc.data().dateEnd === '');
     });
+  }
+
+  onScoreChange(scoreValue) {
+    console.log(scoreValue);
   }
 }
