@@ -19,7 +19,7 @@
                 </mat-option>
               </mat-select>
             </td>
-            <td>{{ challenge.payload.doc.data().dateStart }}</td>
+            <td rowspan="2"><button mat-raised-button color="primary" (click)="completeChallenge(challenge)">Terminé</button></td>
           </tr>
 
           <tr>
@@ -33,7 +33,6 @@
                 </mat-option>
               </mat-select>
             </td>
-            <td>{{ challenge.payload.doc.data().dateEnd }}</td>
           </tr>
           
           <tr>

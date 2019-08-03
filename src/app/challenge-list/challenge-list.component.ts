@@ -30,4 +30,8 @@ export class ChallengeListComponent implements OnInit {
   onScoreChange(scoreValue, challenge, playerNumber) {
     this.challengeService.updateChallenge(challenge, scoreValue, playerNumber);
   }
+
+  completeChallenge(challenge) {
+    this.challengeService.updateChallengeComplete(challenge);
+  }
 }

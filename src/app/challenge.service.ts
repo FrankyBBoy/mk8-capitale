@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
 import { AngularFirestore } from '@angular/fire/firestore';
+import { formatDate } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -28,14 +29,19 @@ export class ChallengeService {
 
   updateChallenge(data, newScore, playerNumber) { 
     let hashWithNewValues = {};
-    
     hashWithNewValues[playerNumber] = { score: newScore };
 
     return this.firestore
       .collection("challenge")
       .doc(data.payload.doc.id)
       .set(hashWithNewValues, { merge: true });
-      //.set({ playerOne: { score: newScore } }, { merge: true });
+  }
+
+  updateChallengeComplete(data) {
+    return this.firestore
+    .collection("challenge")
+    .doc(data.payload.doc.id)
+    .set({dateEnd: formatDate(new Date(), 'yyyy/MM/dd', 'en')}, { merge: true });
   }
   
 }
