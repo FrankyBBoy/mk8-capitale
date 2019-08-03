@@ -3,11 +3,34 @@
   <mat-tab label="En cours"> 
     Content 1 
     <ul>
-      <li *ngFor="let challenge of challenges">
+      <li *ngFor="let challenge of inProgressChallenges">
         {{ challenge.payload.doc.data().playerOne.name }} vs {{ challenge.payload.doc.data().playerTwo.name }}
       </li>
     </ul>
     <button mat-raised-button color="primary" routerLink="/challenges/new">Nouveau</button>
   </mat-tab>
-  <mat-tab label="Terminé"> Content 2 </mat-tab>
+  <mat-tab label="Terminé">
+    <table class="completed-table">
+      <tr>
+        <th>Joueur</th>
+        <th>Pointage</th>
+        <th>Date</th>
+      </tr>
+      <ng-container *ngFor="let challenge of completedChallenges">
+          <tr>
+            <td>{{ challenge.payload.doc.data().playerOne.name }}</td>
+            <td>{{ challenge.payload.doc.data().playerOne.score }}</td>
+            <td>{{ challenge.payload.doc.data().dateStart }}</td>
+          </tr>
+          <tr>
+            <td>{{ challenge.payload.doc.data().playerTwo.name }}</td>
+            <td>{{ challenge.payload.doc.data().playerTwo.score }}</td>
+            <td>{{ challenge.payload.doc.data().dateEnd }}</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+      </ng-container>
+    </table>
+  </mat-tab>
 </mat-tab-group>
