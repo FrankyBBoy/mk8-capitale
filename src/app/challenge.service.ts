@@ -15,12 +15,9 @@ export class ChallengeService {
   })
 
   createChallenge(data) {
-      return new Promise<any>((resolve, reject) =>{
-          this.firestore
-              .collection("challenge")
-              .add(data)
-              .then(res => {}, err => reject(err));
-      });
+    return this.firestore
+      .collection("challenge")
+      .add(data);
   }
 
   getChallenges() {

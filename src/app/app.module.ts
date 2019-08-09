@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 //environment import
 import { environment } from "src/environments/environment";
@@ -22,12 +23,17 @@ import { environment } from "src/environments/environment";
 //angularfire imports
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { ConfirmNewChallengeDialogComponent } from './confirm-new-challenge-dialog/confirm-new-challenge-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChallengeListComponent,
-    ChallengeFormComponent
+    ChallengeFormComponent,
+    ConfirmNewChallengeDialogComponent
+  ],
+  entryComponents: [
+    ConfirmNewChallengeDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +49,8 @@ import { AngularFirestoreModule } from "@angular/fire/firestore";
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

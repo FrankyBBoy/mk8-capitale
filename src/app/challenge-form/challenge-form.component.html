@@ -1,16 +1,21 @@
 <h1>Nouveau challenge</h1>
 <form class="simple-form" [formGroup]="this.challengeService.form" (ngSubmit)="onSubmit()">
   <mat-form-field>
-    <input 
-    matInput 
-    placeholder="Joueur 1"
-    formControlName="playerOneName"/>
+    <mat-label>Joueur 1</mat-label>
+    <mat-select formControlName="playerOneName">
+      <mat-option *ngFor="let playerName of playersNameList" [value]="playerName">
+        {{playerName}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
+
   <mat-form-field>
-    <input 
-    matInput 
-    placeholder="Joueur 2"
-    formControlName="playerTwoName"/>
+    <mat-label>Joueur 2</mat-label>
+    <mat-select formControlName="playerTwoName">
+      <mat-option *ngFor="let playerName of playersNameList" [value]="playerName">
+        {{playerName}}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 </form>
 
