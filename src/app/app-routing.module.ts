@@ -5,7 +5,8 @@ import { ChallengeFormComponent } from './challenge-form/challenge-form.componen
 
 const routes: Routes = [
   { path: 'challenges', component: ChallengeListComponent },
-  { path: 'challenges/new', component: ChallengeFormComponent }
+  { path: 'challenges/new', component: ChallengeFormComponent },
+  { path: '', redirectTo: 'challenges', pathMatch: 'full'}
 ];
 
 @NgModule({
