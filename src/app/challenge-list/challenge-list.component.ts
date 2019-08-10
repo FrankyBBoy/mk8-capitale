@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChallengeService } from '../challenge.service'
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmCompletedDialogComponent } from '../confirm-completed-dialog/confirm-completed-dialog.component';
 
 @Component({
   selector: 'app-challenge-list',
@@ -8,7 +10,8 @@ import { ChallengeService } from '../challenge.service'
 })
 export class ChallengeListComponent implements OnInit {
 
-  constructor(private challengeService:ChallengeService) { }
+  constructor(private challengeService:ChallengeService,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getChallenges();
@@ -32,6 +35,23 @@ export class ChallengeListComponent implements OnInit {
   }
 
   completeChallenge(challenge) {
-    this.challengeService.updateChallengeComplete(challenge);
+    const dialogRef = this.buildDialog();
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.challengeService.updateChallengeComplete(challenge);
+      } 
+    });
+  }
+
+  buildDialog() {
+    return this.dialog.open(ConfirmCompletedDialogComponent, {
+      width: '250px'
+    });
+  }
+
+  readyToComplete(challenge) {
+    return (challenge.payload.doc.data().playerOne.score === 4 || 
+      challenge.payload.doc.data().playerTwo.score === 4);
   }
 }

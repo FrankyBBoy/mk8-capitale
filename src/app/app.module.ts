@@ -24,16 +24,19 @@ import { environment } from "src/environments/environment";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { ConfirmNewChallengeDialogComponent } from './confirm-new-challenge-dialog/confirm-new-challenge-dialog.component';
+import { ConfirmCompletedDialogComponent } from './confirm-completed-dialog/confirm-completed-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChallengeListComponent,
     ChallengeFormComponent,
-    ConfirmNewChallengeDialogComponent
+    ConfirmNewChallengeDialogComponent,
+    ConfirmCompletedDialogComponent
   ],
   entryComponents: [
-    ConfirmNewChallengeDialogComponent
+    ConfirmNewChallengeDialogComponent,
+    ConfirmCompletedDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -19,7 +19,7 @@
                 </mat-option>
               </mat-select>
             </td>
-            <td rowspan="2"><button mat-raised-button color="primary" (click)="completeChallenge(challenge)">Terminé</button></td>
+            <td rowspan="2"><button mat-raised-button color="primary" (click)="completeChallenge(challenge)" [disabled]=!readyToComplete(challenge)>Terminé</button></td>
           </tr>
 
           <tr>
