@@ -16,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+
 
 //environment import
 import { environment } from "src/environments/environment";
@@ -53,7 +55,8 @@ import { ConfirmCompletedDialogComponent } from './confirm-completed-dialog/conf
     AngularFirestoreModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

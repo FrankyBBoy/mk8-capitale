@@ -3,3 +3,39 @@
     width: 100%;
     text-align: left;
 }
+
+mat-card {
+    margin: 0.5em;
+    display: flex;
+    justify-content: space-between;
+
+    .playersName {
+        display: flex;
+        flex-direction: column;
+
+        .playerOneName {
+            margin-bottom: 0.5em;
+        }
+    }
+
+    .playersScore {
+        display: flex;
+
+        .scoreSelectBox {
+            margin-right: 1em;
+        }
+
+        .playerOneScore {
+            margin-bottom: 0.5em;
+        }
+    }
+
+    .completed {
+        display: flex;
+    }
+}
+
+button {
+    margin-left: 0.5em;
+}
+

@@ -1,45 +1,40 @@
 <h1>Challenges</h1>
 <mat-tab-group>
   <mat-tab label="En cours"> 
-    <table class="challenges-table">
-        <tr>
-          <th>Joueur</th>
-          <th>Pointage</th>
-          <th></th>
-        </tr>
-        <ng-container *ngFor="let challenge of inProgressChallenges">
-          <tr>
-            <td>{{ challenge.payload.doc.data().playerOne.name }}</td>
-            <td>
-              <mat-select 
-              (selectionChange)="onScoreChange($event.value, challenge, 'playerOne')" 
-              [value]=challenge.payload.doc.data().playerOne.score >
-                <mat-option *ngFor="let scoreValue of scoreValues" [value]="scoreValue">
-                  {{scoreValue}}
-                </mat-option>
-              </mat-select>
-            </td>
-            <td rowspan="2"><button mat-raised-button color="primary" (click)="completeChallenge(challenge)" [disabled]=!readyToComplete(challenge)>Terminé</button></td>
-          </tr>
 
-          <tr>
-            <td>{{ challenge.payload.doc.data().playerTwo.name }}</td>
-            <td>
-              <mat-select 
-              (selectionChange)="onScoreChange($event.value, challenge, 'playerTwo')" 
-              [value]=challenge.payload.doc.data().playerTwo.score >
-                <mat-option *ngFor="let scoreValue of scoreValues" [value]="scoreValue">
-                  {{scoreValue}}
-                </mat-option>
-              </mat-select>
-            </td>
-          </tr>
-          
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-        </ng-container>
-      </table>
+    <mat-card *ngFor="let challenge of inProgressChallenges">
+
+      <div class="playersName">
+        <span class="playerOneName">{{challenge.payload.doc.data().playerOne.name}}</span>
+        <span>{{challenge.payload.doc.data().playerTwo.name}}</span>
+      </div>
+
+
+      <div class="playersScore">
+        <div class="scoreSelectBox">
+          <mat-select 
+          (selectionChange)="onScoreChange($event.value, challenge, 'playerOne')" 
+          [value]=challenge.payload.doc.data().playerOne.score 
+          class="playerOneScore">
+            <mat-option *ngFor="let scoreValue of scoreValues" [value]="scoreValue">
+              {{scoreValue}}
+            </mat-option>
+          </mat-select>
+  
+          <mat-select 
+          (selectionChange)="onScoreChange($event.value, challenge, 'playerTwo')" 
+          [value]=challenge.payload.doc.data().playerTwo.score >
+            <mat-option *ngFor="let scoreValue of scoreValues" [value]="scoreValue">
+              {{scoreValue}}
+            </mat-option>
+          </mat-select>
+        </div>      
+        <div class="completed">
+          <button mat-button color="primary" (click)="completeChallenge(challenge)" [disabled]=!readyToComplete(challenge)>Terminé</button>
+        </div> 
+      </div>
+    </mat-card>
+
     <button mat-raised-button color="primary" routerLink="/challenges/new">Nouveau</button>
   </mat-tab>
   <mat-tab label="Terminé">
