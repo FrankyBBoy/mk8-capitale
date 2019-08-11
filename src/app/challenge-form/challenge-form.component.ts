@@ -20,7 +20,7 @@ export class ChallengeFormComponent implements OnInit {
 
   ngOnInit() {}
 
-  playersNameList = ['Crispo', 'Brunet', 'Alexandre', 'Pier-Luc', 'Lafond', 'Maxime', 'Simon', 'Benoit', 'Paquet'];
+  playersNameList = ['Crispo', 'Brunet', 'Alexandre', 'Pier-Luc', 'Lafond', 'Maxime', 'Simon', 'Benoit', 'Paquet', 'Charlphillip', 'David'];
 
   onSubmit() {
     if (this.formIsValid(this.challengeService.form)) {
