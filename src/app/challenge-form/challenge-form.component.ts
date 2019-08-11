@@ -14,7 +14,7 @@ import { ConfirmNewChallengeDialogComponent } from '../confirm-new-challenge-dia
 })
 export class ChallengeFormComponent implements OnInit {
 
-  constructor(private challengeService:ChallengeService,
+  constructor(public challengeService:ChallengeService,
               private router: Router,
               public dialog: MatDialog) { }
 
