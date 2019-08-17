@@ -27,6 +27,7 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { ConfirmNewChallengeDialogComponent } from './confirm-new-challenge-dialog/confirm-new-challenge-dialog.component';
 import { ConfirmCompletedDialogComponent } from './confirm-completed-dialog/confirm-completed-dialog.component';
+import { StatistiquesComponent } from './statistiques/statistiques.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ConfirmCompletedDialogComponent } from './confirm-completed-dialog/conf
     ChallengeListComponent,
     ChallengeFormComponent,
     ConfirmNewChallengeDialogComponent,
-    ConfirmCompletedDialogComponent
+    ConfirmCompletedDialogComponent,
+    StatistiquesComponent
   ],
   entryComponents: [
     ConfirmNewChallengeDialogComponent,
