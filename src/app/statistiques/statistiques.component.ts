@@ -22,15 +22,53 @@ export class StatistiquesComponent implements OnInit {
   buildStatsData() {
     this.challengeService.getChallenges().subscribe(res => { 
       this.challenges = res;
-      this.statsData = [];
+      
+      this.setStatsData();
+      this.sortStatsData();
+      this.setPositions();
+    });
+  }
 
-      AppConstant.PLAYERS_NAME_LIST.forEach( (playerName) => {
-        this.statsData.push( {position: 1, 
-                              playerName: playerName, 
-                              win: this.winCount(playerName), 
-                              loss: this.lossCount(playerName)} );
-      });
+  setStatsData() {
+    this.statsData = [];
 
+    AppConstant.PLAYERS_NAME_LIST.forEach( (playerName) => {
+      this.statsData.push( {position: 0, 
+                            playerName: playerName, 
+                            win: this.winCount(playerName), 
+                            loss: this.lossCount(playerName)} );
+    });
+  }
+
+  sortStatsData() {
+    this.statsData.sort((a,b) => {
+      if (a.win > b.win) {
+        return -1;
+      } else if ( a.win === b.win) {
+        if (a.loss < b.loss) {
+          return -1;
+        } else if (a.loss === b.loss) {
+          return 0;
+        } else {
+          return 1;
+        }
+      } else {
+        return 1;
+      }
+    });
+  }
+
+  setPositions() {
+    let position = 0;
+    let lastElement;
+
+    this.statsData.forEach((statDataElem, index) => {
+      if (index === 0 || (statDataElem.win !== lastElement.win || statDataElem.loss!== lastElement.loss)) {
+        position++;
+      }
+
+      statDataElem.position = position;
+      lastElement = statDataElem;
     });
   }
 
