@@ -13,7 +13,8 @@ export class StatistiquesComponent implements OnInit {
 
   challenges;
   statsData;
-  displayedColumns: string[] = ['position', 'playerName', 'win', 'loss'];
+  //displayedColumns: string[] = ['position', 'playerName', 'win', 'loss'];
+  displayedColumns: string[] = ['playerName', 'win', 'loss'];
 
   ngOnInit() {
     this.buildStatsData();
