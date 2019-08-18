@@ -77,8 +77,9 @@ export class StatistiquesComponent implements OnInit {
   }
 
   hasWinnedTheChallenge(challenge, playerName) {
-    return ((challenge.payload.doc.data().playerOne.name === playerName && challenge.payload.doc.data().playerOne.score === 4) ||
-            (challenge.payload.doc.data().playerTwo.name === playerName && challenge.payload.doc.data().playerTwo.score === 4));
+    return (challenge.payload.doc.data().dateEnd !== '' &&
+            ((challenge.payload.doc.data().playerOne.name === playerName && challenge.payload.doc.data().playerOne.score === 4) ||
+            (challenge.payload.doc.data().playerTwo.name === playerName && challenge.payload.doc.data().playerTwo.score === 4)));
   }
 
   lossCount(playerName) {
@@ -86,8 +87,9 @@ export class StatistiquesComponent implements OnInit {
   }
 
   hasLostTheChallenge(challenge, playerName) {
-    return ((challenge.payload.doc.data().playerOne.name === playerName && challenge.payload.doc.data().playerOne.score < 4) ||
-            (challenge.payload.doc.data().playerTwo.name === playerName && challenge.payload.doc.data().playerTwo.score < 4));
+    return (challenge.payload.doc.data().dateEnd !== '' &&
+            ((challenge.payload.doc.data().playerOne.name === playerName && challenge.payload.doc.data().playerOne.score < 4) ||
+            (challenge.payload.doc.data().playerTwo.name === playerName && challenge.payload.doc.data().playerTwo.score < 4)));
   }
 
 }
