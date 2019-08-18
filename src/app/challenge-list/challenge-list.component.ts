@@ -25,8 +25,10 @@ export class ChallengeListComponent implements OnInit {
   getChallenges() {
     this.challengeService.getChallenges().subscribe(res => {
       this.challenges = res;
-      this.completedChallenges = this.challenges.filter(challenge => challenge.payload.doc.data().dateEnd !== '');
-      this.inProgressChallenges = this.challenges.filter(challenge => challenge.payload.doc.data().dateEnd === '');
+      this.completedChallenges = this.challenges.filter(challenge => challenge.payload.doc.data().dateEnd !== '')
+                                                .sort((a,b) => (a.payload.doc.data().dateEnd > b.payload.doc.data().dateEnd) ? -1 : 1);
+      this.inProgressChallenges = this.challenges.filter(challenge => challenge.payload.doc.data().dateEnd === '')
+                                                 .sort((a,b) => (a.payload.doc.data().dateStart > b.payload.doc.data().dateStart) ? -1 : 1);
     });
   }
 

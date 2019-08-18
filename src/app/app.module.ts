@@ -17,7 +17,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatTableModule } from '@angular/material/table';
 
 //environment import
 import { environment } from "src/environments/environment";
@@ -27,6 +27,7 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { ConfirmNewChallengeDialogComponent } from './confirm-new-challenge-dialog/confirm-new-challenge-dialog.component';
 import { ConfirmCompletedDialogComponent } from './confirm-completed-dialog/confirm-completed-dialog.component';
+import { StatistiquesComponent } from './statistiques/statistiques.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ConfirmCompletedDialogComponent } from './confirm-completed-dialog/conf
     ChallengeListComponent,
     ChallengeFormComponent,
     ConfirmNewChallengeDialogComponent,
-    ConfirmCompletedDialogComponent
+    ConfirmCompletedDialogComponent,
+    StatistiquesComponent
   ],
   entryComponents: [
     ConfirmNewChallengeDialogComponent,
@@ -56,7 +58,8 @@ import { ConfirmCompletedDialogComponent } from './confirm-completed-dialog/conf
     ReactiveFormsModule,
     MatSelectModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

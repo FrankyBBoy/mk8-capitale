@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChallengeService } from '../challenge.service'
+import { AppConstant } from '../shared/app-constant'
 import { Router } from '@angular/router';
 import { formatDate } from '@angular/common';
 import { FormGroup } from '@angular/forms';
@@ -20,7 +21,7 @@ export class ChallengeFormComponent implements OnInit {
 
   ngOnInit() {}
 
-  playersNameList = ['Crispo', 'Brunet', 'Alexandre', 'Pier-Luc', 'Lafond', 'Maxime', 'Simon', 'Benoit', 'Paquet', 'Charlphillip', 'David'];
+  playersNameList = AppConstant.PLAYERS_NAME_LIST;
 
   onSubmit() {
     if (this.formIsValid(this.challengeService.form)) {
