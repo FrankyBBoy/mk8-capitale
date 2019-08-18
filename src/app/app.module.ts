@@ -17,7 +17,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
-
+import { MatTableModule } from '@angular/material/table';
 
 //environment import
 import { environment } from "src/environments/environment";
@@ -58,7 +58,8 @@ import { StatistiquesComponent } from './statistiques/statistiques.component';
     ReactiveFormsModule,
     MatSelectModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
