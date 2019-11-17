@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChallengeService } from '../challenge.service'
+import { ChallengeService } from '../challenge.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmCompletedDialogComponent } from '../confirm-completed-dialog/confirm-completed-dialog.component';
 
@@ -10,25 +10,25 @@ import { ConfirmCompletedDialogComponent } from '../confirm-completed-dialog/con
 })
 export class ChallengeListComponent implements OnInit {
 
-  constructor(private challengeService:ChallengeService,
+  constructor(private challengeService: ChallengeService,
               public dialog: MatDialog) { }
+
+  challenges;
+  completedChallenges;
+  inProgressChallenges;
+  scoreValues = [0, 1, 2, 3, 4];
 
   ngOnInit() {
     this.getChallenges();
   }
 
-  challenges;
-  completedChallenges;
-  inProgressChallenges;
-  scoreValues = [0,1,2,3,4];
-
   getChallenges() {
     this.challengeService.getChallenges().subscribe(res => {
       this.challenges = res;
       this.completedChallenges = this.challenges.filter(challenge => challenge.payload.doc.data().dateEnd !== '')
-                                                .sort((a,b) => (a.payload.doc.data().dateEnd > b.payload.doc.data().dateEnd) ? -1 : 1);
+                                          .sort((a, b) => (a.payload.doc.data().dateEnd > b.payload.doc.data().dateEnd) ? -1 : 1);
       this.inProgressChallenges = this.challenges.filter(challenge => challenge.payload.doc.data().dateEnd === '')
-                                                 .sort((a,b) => (a.payload.doc.data().dateStart > b.payload.doc.data().dateStart) ? -1 : 1);
+                                          .sort((a, b) => (a.payload.doc.data().dateStart > b.payload.doc.data().dateStart) ? -1 : 1);
     });
   }
 
@@ -38,11 +38,11 @@ export class ChallengeListComponent implements OnInit {
 
   completeChallenge(challenge) {
     const dialogRef = this.buildDialog();
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.challengeService.updateChallengeComplete(challenge);
-      } 
+      }
     });
   }
 
@@ -53,7 +53,7 @@ export class ChallengeListComponent implements OnInit {
   }
 
   readyToComplete(challenge) {
-    return (challenge.payload.doc.data().playerOne.score === 4 || 
+    return (challenge.payload.doc.data().playerOne.score === 4 ||
       challenge.payload.doc.data().playerTwo.score === 4);
   }
 }

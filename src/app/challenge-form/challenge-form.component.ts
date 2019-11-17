@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ChallengeService } from '../challenge.service'
-import { AppConstant } from '../shared/app-constant'
+import { ChallengeService } from '../challenge.service';
+import { AppConstant } from '../shared/app-constant';
 import { Router } from '@angular/router';
 import { formatDate } from '@angular/common';
 import { FormGroup } from '@angular/forms';
@@ -15,28 +15,28 @@ import { ConfirmNewChallengeDialogComponent } from '../confirm-new-challenge-dia
 })
 export class ChallengeFormComponent implements OnInit {
 
-  constructor(public challengeService:ChallengeService,
+  constructor(public challengeService: ChallengeService,
               private router: Router,
               public dialog: MatDialog) { }
 
-  ngOnInit() {}
-
   playersNameList = AppConstant.PLAYERS_NAME_LIST;
+
+  ngOnInit() {}
 
   onSubmit() {
     if (this.formIsValid(this.challengeService.form)) {
       const dialogRef = this.buildDialog();
-  
+
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
           console.log('Creation du challenges...');
-          let data = this.buildData();
+          const data = this.buildData();
 
           this.challengeService.createChallenge(data).then(res => {
             this.challengeService.form.reset();
             this.router.navigate(['/challenges']);
           });
-        } 
+        }
       });
     } else {
       console.log('Challenge invalide!');
@@ -44,13 +44,13 @@ export class ChallengeFormComponent implements OnInit {
   }
 
   formIsValid(form: FormGroup) {
-    return form.value.playerOneName !== '' && 
+    return form.value.playerOneName !== '' &&
       form.value.playerTwoName !== '' &&
       form.value.playerOneName !== form.value.playerTwoName;
   }
 
   buildData() {
-    return {'playerOne': 
+    return {'playerOne':
               {'name': this.challengeService.form.value.playerOneName,
               'score': 0},
             'playerTwo':
@@ -63,7 +63,7 @@ export class ChallengeFormComponent implements OnInit {
   buildDialog() {
     return this.dialog.open(ConfirmNewChallengeDialogComponent, {
       width: '250px',
-      data: {playerOneName: this.challengeService.form.value.playerOneName, 
+      data: {playerOneName: this.challengeService.form.value.playerOneName,
             playerTwoName: this.challengeService.form.value.playerTwoName}
     });
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ChallengeService } from '../challenge.service'
-import { AppConstant } from '../shared/app-constant'
+import { ChallengeService } from '../challenge.service';
+import { AppConstant } from '../shared/app-constant';
 
 @Component({
   selector: 'app-statistiques',
@@ -9,11 +9,11 @@ import { AppConstant } from '../shared/app-constant'
 })
 export class StatistiquesComponent implements OnInit {
 
-  constructor(private challengeService:ChallengeService) { }
+  constructor(private challengeService: ChallengeService) { }
 
   challenges;
   statsData;
-  //displayedColumns: string[] = ['position', 'playerName', 'win', 'loss'];
+  // displayedColumns: string[] = ['position', 'playerName', 'win', 'loss'];
   displayedColumns: string[] = ['playerName', 'win', 'loss'];
 
   ngOnInit() {
@@ -21,9 +21,9 @@ export class StatistiquesComponent implements OnInit {
   }
 
   buildStatsData() {
-    this.challengeService.getChallenges().subscribe(res => { 
+    this.challengeService.getChallenges().subscribe(res => {
       this.challenges = res;
-      
+
       this.setStatsData();
       this.sortStatsData();
       this.setPositions();
@@ -34,15 +34,15 @@ export class StatistiquesComponent implements OnInit {
     this.statsData = [];
 
     AppConstant.PLAYERS_NAME_LIST.forEach( (playerName) => {
-      this.statsData.push( {position: 0, 
-                            playerName: playerName, 
-                            win: this.winCount(playerName), 
+      this.statsData.push( {position: 0,
+                            playerName: playerName,
+                            win: this.winCount(playerName),
                             loss: this.lossCount(playerName)} );
     });
   }
 
   sortStatsData() {
-    this.statsData.sort((a,b) => {
+    this.statsData.sort((a, b) => {
       if (a.win > b.win) {
         return -1;
       } else if ( a.win === b.win) {
@@ -64,7 +64,7 @@ export class StatistiquesComponent implements OnInit {
     let lastElement;
 
     this.statsData.forEach((statDataElem, index) => {
-      if (index === 0 || (statDataElem.win !== lastElement.win || statDataElem.loss!== lastElement.loss)) {
+      if (index === 0 || (statDataElem.win !== lastElement.win || statDataElem.loss !== lastElement.loss)) {
         position++;
       }
 

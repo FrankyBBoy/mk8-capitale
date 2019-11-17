@@ -13,19 +13,19 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ChallengeFormComponent } from './challenge-form/challenge-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
 
-//environment import
-import { environment } from "src/environments/environment";
+// environment import
+import { environment } from 'src/environments/environment';
 
-//angularfire imports
-import { AngularFireModule } from "@angular/fire";
-import { AngularFirestoreModule } from "@angular/fire/firestore";
+// angularfire imports
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ConfirmNewChallengeDialogComponent } from './confirm-new-challenge-dialog/confirm-new-challenge-dialog.component';
 import { ConfirmCompletedDialogComponent } from './confirm-completed-dialog/confirm-completed-dialog.component';
 import { StatistiquesComponent } from './statistiques/statistiques.component';
