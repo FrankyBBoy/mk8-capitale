@@ -2,11 +2,12 @@
   <mat-toolbar-row>
     <span>MK8-Capitale</span>
     <div class="main-menu">
-      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
       <mat-menu #menu="matMenu">
         <button routerLink="/challenges" mat-menu-item>Challenges</button>
         <button routerLink="/statistiques" mat-menu-item>Statistiques</button>
-        <button mat-menu-item>Règlements</button>
       </mat-menu>
   </div>
   </mat-toolbar-row>
