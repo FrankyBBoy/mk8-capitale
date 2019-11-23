@@ -29,3 +29,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Deploy
 Run `ng build --prod`
 Run `firebase deploy`
+
+## Backup and restore database
+`gcloud config set project mk8-capitale
+Export database: `gcloud firestore export gs://mk8-capitale-backup-bucket/2019-11-23 --collection-ids=challenge`
+Import database: `gcloud firestore import gs://mk8-capitale-backup-bucket/2019-11-23 --collection-ids=challenge`
+
+More informations: https://firebase.google.com/docs/firestore/manage-data/export-import
