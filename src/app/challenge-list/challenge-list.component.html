@@ -1,43 +1,43 @@
 <h1>Challenges</h1>
-<mat-tab-group>
+
+
+<mat-tab-group class="tab-group-container">
   <mat-tab label="En cours"> 
+    <mat-card class="challenge-container" *ngFor="let challenge of inProgressChallenges">
 
-    <mat-card *ngFor="let challenge of inProgressChallenges">
-
-      <div class="playersName">
-        <span class="playerOneName">{{challenge.payload.doc.data().playerOne.name}}</span>
-        <span>{{challenge.payload.doc.data().playerTwo.name}}</span>
+      <div class="challenge-container__players">
+        <div class="challenge-container__players__1">{{challenge.payload.doc.data().playerOne.name}}</div>
+        <div class="challenge-container__players__2">{{challenge.payload.doc.data().playerTwo.name}}</div>
       </div>
 
-
-      <div class="playersScore">
-        <div class="scoreSelectBox">
-          <mat-select 
+      <div class="challenge-container__score">
+        <div class="challenge-container__score__select">
+          <mat-select class="challenge-container__score__select__1"
           (selectionChange)="onScoreChange($event.value, challenge, 'playerOne')" 
-          [value]=challenge.payload.doc.data().playerOne.score 
-          class="playerOneScore">
+          [value]=challenge.payload.doc.data().playerOne.score>
             <mat-option *ngFor="let scoreValue of scoreValues" [value]="scoreValue">
               {{scoreValue}}
             </mat-option>
           </mat-select>
   
-          <mat-select 
+          <mat-select class="challenge-container__score__select__2"
           (selectionChange)="onScoreChange($event.value, challenge, 'playerTwo')" 
           [value]=challenge.payload.doc.data().playerTwo.score >
             <mat-option *ngFor="let scoreValue of scoreValues" [value]="scoreValue">
               {{scoreValue}}
             </mat-option>
           </mat-select>
-        </div>      
-        <div class="completed">
+        </div>   
+        <div class="challenge-container__button">
           <button mat-button color="primary" (click)="completeChallenge(challenge)" [disabled]=!readyToComplete(challenge)>Terminé</button>
-        </div> 
+        </div>            
       </div>
     </mat-card>
 
     <button mat-raised-button color="primary" routerLink="/challenges/new">Nouveau</button>
   </mat-tab>
   <mat-tab label="Terminé">
+
     <table class="challenges-table">
       <tr>
         <th>Joueurs</th>
@@ -60,5 +60,6 @@
           </tr>
       </ng-container>
     </table>
+
   </mat-tab>
 </mat-tab-group>
