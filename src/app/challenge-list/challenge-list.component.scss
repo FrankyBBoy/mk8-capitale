@@ -1,7 +1,6 @@
 .active-challenges-container {
     max-width: 25rem;
-    margin: 0 auto;
-    margin-bottom: 3rem;
+    margin: 3rem auto;
 
     &__title {
         text-align: center;
@@ -33,8 +32,8 @@
 }
 
 .history-challenge-container {
-    margin: 0 auto;
-    margin-bottom: 3rem;
+    margin: 3rem auto;
+    padding-top: 1rem;
     border-top: 1px solid lightgray;
     max-width: 50rem;
 
