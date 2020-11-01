@@ -1,67 +1,65 @@
-<h1>Challenges</h1>
+<div class="active-challenges-container">
+  <h1 class="active-challenges-container__title">Challenges</h1>
 
-
-<mat-tab-group class="tab-group-container">
-  <mat-tab label="En cours"> 
-    <mat-card class="challenge-container" *ngFor="let challenge of inProgressChallenges">
-
-      <div class="challenge-container__players">
-        <div class="challenge-container__players__1">{{challenge.payload.doc.data().playerOne.name}}</div>
-        <div class="challenge-container__players__2">{{challenge.payload.doc.data().playerTwo.name}}</div>
-      </div>
-
-      <div class="challenge-container__score">
-        <div class="challenge-container__score__select">
-          <mat-select class="challenge-container__score__select__1"
-          (selectionChange)="onScoreChange($event.value, challenge, 'playerOne')" 
-          [value]=challenge.payload.doc.data().playerOne.score>
-            <mat-option *ngFor="let scoreValue of scoreValues" [value]="scoreValue">
-              {{scoreValue}}
-            </mat-option>
-          </mat-select>
+  <mat-card class="challenge-container" *ngFor="let challenge of inProgressChallenges">
   
-          <mat-select class="challenge-container__score__select__2"
-          (selectionChange)="onScoreChange($event.value, challenge, 'playerTwo')" 
-          [value]=challenge.payload.doc.data().playerTwo.score >
-            <mat-option *ngFor="let scoreValue of scoreValues" [value]="scoreValue">
-              {{scoreValue}}
-            </mat-option>
-          </mat-select>
-        </div>   
-        <div class="challenge-container__button">
-          <button mat-button color="primary" (click)="completeChallenge(challenge)" [disabled]=!readyToComplete(challenge)>Terminé</button>
-        </div>            
-      </div>
-    </mat-card>
+    <div class="challenge-container__players">
+      <div class="challenge-container__players__1">{{challenge.payload.doc.data().playerOne.name}}</div>
+      <div class="challenge-container__players__2">{{challenge.payload.doc.data().playerTwo.name}}</div>
+    </div>
+  
+    <div class="challenge-container__score">
+      <div class="challenge-container__score__select">
+        <mat-select class="challenge-container__score__select__1"
+        (selectionChange)="onScoreChange($event.value, challenge, 'playerOne')" 
+        [value]=challenge.payload.doc.data().playerOne.score>
+          <mat-option *ngFor="let scoreValue of scoreValues" [value]="scoreValue">
+            {{scoreValue}}
+          </mat-option>
+        </mat-select>
+  
+        <mat-select class="challenge-container__score__select__2"
+        (selectionChange)="onScoreChange($event.value, challenge, 'playerTwo')" 
+        [value]=challenge.payload.doc.data().playerTwo.score >
+          <mat-option *ngFor="let scoreValue of scoreValues" [value]="scoreValue">
+            {{scoreValue}}
+          </mat-option>
+        </mat-select>
+      </div>   
+      <div class="challenge-container__button">
+        <button mat-button color="primary" (click)="completeChallenge(challenge)" [disabled]=!readyToComplete(challenge)>Terminé</button>
+      </div>            
+    </div>
+  </mat-card>
+  
+  <button mat-raised-button color="primary" routerLink="/challenges/new">Nouveau</button>
+</div>
 
-    <button mat-raised-button color="primary" routerLink="/challenges/new">Nouveau</button>
-  </mat-tab>
-  <mat-tab label="Terminé">
+<div class="history-challenge-container">
+  <h1 class="history-challenge-container__title">Historique</h1>
+  <table class="challenges-table">
+    <tr>
+      <th>Joueurs</th>
+      <th>Pointage</th>
+      <th>Dates</th>
+    </tr>
+    <ng-container *ngFor="let challenge of completedChallenges">
+        <tr class="challenges-table__player-line">
+          <td>{{ challenge.payload.doc.data().playerOne.name }}</td>
+          <td>{{ challenge.payload.doc.data().playerOne.score }}</td>
+          <td>{{ challenge.payload.doc.data().dateStart }}</td>
+        </tr>
+        <tr class="challenges-table__player-line">
+          <td>{{ challenge.payload.doc.data().playerTwo.name }}</td>
+          <td>{{ challenge.payload.doc.data().playerTwo.score }}</td>
+          <td>{{ challenge.payload.doc.data().dateEnd }}</td>
+        </tr>
+        <tr class="challenges-table__non-player-line">
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+    </ng-container>
+  </table>
+</div>
 
-    <table class="challenges-table">
-      <tr>
-        <th>Joueurs</th>
-        <th>Pointage</th>
-        <th>Dates</th>
-      </tr>
-      <ng-container *ngFor="let challenge of completedChallenges">
-          <tr class="challenges-table__player-line">
-            <td>{{ challenge.payload.doc.data().playerOne.name }}</td>
-            <td>{{ challenge.payload.doc.data().playerOne.score }}</td>
-            <td>{{ challenge.payload.doc.data().dateStart }}</td>
-          </tr>
-          <tr class="challenges-table__player-line">
-            <td>{{ challenge.payload.doc.data().playerTwo.name }}</td>
-            <td>{{ challenge.payload.doc.data().playerTwo.score }}</td>
-            <td>{{ challenge.payload.doc.data().dateEnd }}</td>
-          </tr>
-          <tr class="challenges-table__non-player-line">
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-          </tr>
-      </ng-container>
-    </table>
-
-  </mat-tab>
-</mat-tab-group>
