@@ -43,7 +43,7 @@
       <th>Pointage</th>
       <th>Dates</th>
     </tr>
-    <ng-container *ngFor="let challenge of completedChallenges">
+    <ng-container *ngFor="let challenge of completedChallenges; let i = index">
         <tr class="challenges-table__player-line">
           <td>{{ challenge.payload.doc.data().playerOne.name }}</td>
           <td>{{ challenge.payload.doc.data().playerOne.score }}</td>
@@ -54,7 +54,7 @@
           <td>{{ challenge.payload.doc.data().playerTwo.score }}</td>
           <td>{{ challenge.payload.doc.data().dateEnd }}</td>
         </tr>
-        <tr class="challenges-table__non-player-line">
+        <tr class="challenges-table__non-player-line" *ngIf="i < completedChallenges.length-1">
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
